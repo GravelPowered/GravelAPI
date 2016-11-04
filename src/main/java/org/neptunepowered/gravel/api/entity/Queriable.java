@@ -30,24 +30,32 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.neptunepowered.gravel.api.entity.component;
+package org.neptunepowered.gravel.api.entity;
 
-import org.neptunepowered.gravel.api.entity.Entity;
-import org.neptunepowered.gravel.api.entity.Queriable;
+import java.util.Optional;
 
 /**
- * Represents a component, for an entity.
- * For example, you could be representing health.
+ * Represent an object that can be manipulated using {@link Query}s.
  */
-public interface Component extends Queriable {
+public interface Queriable {
 
     /**
-     * Dumps the current values of this component into the given entity.
+     * Sets the value of the given query in the {@link Entity}.
      *
-     * @param entity The entity
-     * @param <T> The type of the entity
-     * @return The entity
+     * @param query The query
+     * @param value The new value
+     * @param <T> The type of the query and value
+     * @return {@code True} if successfully completed manipulation
      */
-    <T extends Entity> T dump(T entity);
+    <T> boolean setValue(Query<T> query, T value);
+
+    /**
+     * Gets the value for the given {@link Query}, if available.
+     *
+     * @param query The query
+     * @param <T> The type of the query and value
+     * @return The value, if available
+     */
+    <T> Optional<T> getValue(Query<T> query);
 
 }

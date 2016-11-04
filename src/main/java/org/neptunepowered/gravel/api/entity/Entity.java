@@ -39,7 +39,7 @@ import java.util.Optional;
 /**
  * Represents an entity, using components and little data.
  */
-public interface Entity {
+public interface Entity extends Queriable {
 
     /**
      * Gets the {@link Component}, if available, using it's {@link Class}.

@@ -32,6 +32,7 @@
 
 package org.neptunepowered.gravel.api.entity.component.living;
 
+import org.neptunepowered.gravel.api.entity.Queries;
 import org.neptunepowered.gravel.api.entity.component.Component;
 import org.neptunepowered.gravel.api.entity.living.Living;
 
@@ -45,13 +46,17 @@ public interface HealthComponent extends Component {
      *
      * @return The entity's health
      */
-    double getHealth();
+    default double getHealth() {
+        return this.getValue(Queries.HEALTH).get();
+    }
 
     /**
      * Sets the health of the {@link Living} entity.
      *
      * @param health The new health value
      */
-    void setHealth(double health);
+    default void setHealth(double health) {
+        this.setValue(Queries.HEALTH, health);
+    }
 
 }

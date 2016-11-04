@@ -30,24 +30,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.neptunepowered.gravel.api.entity.component;
-
-import org.neptunepowered.gravel.api.entity.Entity;
-import org.neptunepowered.gravel.api.entity.Queriable;
+package org.neptunepowered.gravel.api.entity;
 
 /**
- * Represents a component, for an entity.
- * For example, you could be representing health.
+ * A pseudo-enum of the {@link Query}s.
  */
-public interface Component extends Queriable {
+public final class Queries {
 
-    /**
-     * Dumps the current values of this component into the given entity.
-     *
-     * @param entity The entity
-     * @param <T> The type of the entity
-     * @return The entity
-     */
-    <T extends Entity> T dump(T entity);
+    public static final Query<Double> HEALTH = Query.query();
 
 }
