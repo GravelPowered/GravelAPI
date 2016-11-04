@@ -41,11 +41,11 @@ import org.neptunepowered.gravel.api.entity.component.living.HealthComponent;
 public interface Living extends Entity {
 
     /**
-     * Gets the {@link HealthComponent} for this entity.
+     * Creates a {@link HealthComponent} based on this entity's values.
      *
      * @return The health component
      */
-    default HealthComponent getHealthComponent() {
+    default HealthComponent createHealthComponent() {
         return this.get(HealthComponent.class).get();
     }
 

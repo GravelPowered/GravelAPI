@@ -30,29 +30,59 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.neptunepowered.gravel.api;
+package org.neptunepowered.gravel.api.entity.query;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.base.MoreObjects;
 
 /**
- * The control centre.
- * Allows for static access to {@link System}.
+ * Represents a of to manipulate an entity.
  */
-public final class Gravel {
-
-    private static System instance = null;
+public final class Query<T> {
 
     /**
-     * Gets the {@link System} being used.
+     * Creates a {@link Query} using the given path.
      *
-     * @return The system
+     * @param path The path to use for serialisation.
+     * @param <T> The type of the of
+     * @return The of
      */
-    public static System getSystem() {
-        checkNotNull(instance, "Gravel has not yet been initialised!");
-        return instance;
+    public static <T> Query<T> of(final String... path) {
+        return new Query<>(path);
     }
 
-    private Gravel() {
+    private final String[] path;
+
+    private Query(final String[] path) {
+        this.path = path;
+    }
+
+    /**
+     * Gets the path used in serialisation.
+     *
+     * @return The path
+     */
+    public String[] getPath() {
+        return this.path;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Query)) {
+            return false;
+        }
+
+        final Query that = (Query) obj;
+        return this.path == that.path;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("path", this.path)
+                .toString();
     }
 
 }

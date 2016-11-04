@@ -30,18 +30,26 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.neptunepowered.gravel.api.entity;
+package org.neptunepowered.gravel.api.entity.query;
+
+import org.neptunepowered.gravel.api.entity.living.Living;
 
 /**
- * Represents a query to manipulate an entity.
+ * A pseudo-enum of the {@link Query}s.
  */
-public final class Query<T> {
+public final class Queries {
 
-    public static <T> Query<T> query() {
-        return new Query<>();
-    }
+    /**
+     * The query for manipulating the health of a {@link Living} entity.
+     */
+    public static final Query<Double> HEALTH = Query.of("health");
 
-    private Query() {
+    /**
+     * A query for manipulating the maximum health of a {@link Living} entity.
+     */
+    public static final Query<Double> MAX_HEALTH = Query.of("max-health");
+
+    private Queries() {
     }
 
 }

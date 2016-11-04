@@ -33,7 +33,7 @@
 package org.neptunepowered.gravel.api.entity.component;
 
 import org.neptunepowered.gravel.api.entity.Entity;
-import org.neptunepowered.gravel.api.entity.Queriable;
+import org.neptunepowered.gravel.api.entity.query.Queriable;
 
 /**
  * Represents a component, for an entity.

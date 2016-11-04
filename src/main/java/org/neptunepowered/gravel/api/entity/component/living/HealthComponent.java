@@ -32,7 +32,7 @@
 
 package org.neptunepowered.gravel.api.entity.component.living;
 
-import org.neptunepowered.gravel.api.entity.Queries;
+import org.neptunepowered.gravel.api.entity.query.Queries;
 import org.neptunepowered.gravel.api.entity.component.Component;
 import org.neptunepowered.gravel.api.entity.living.Living;
 
@@ -54,9 +54,31 @@ public interface HealthComponent extends Component {
      * Sets the health of the {@link Living} entity.
      *
      * @param health The new health value
+     * @return This component
      */
-    default void setHealth(double health) {
+    default HealthComponent setHealth(double health) {
         this.setValue(Queries.HEALTH, health);
+        return this;
+    }
+
+    /**
+     * Gets the max health of the {@link Living} entity.
+     *
+     * @return The entity's max health
+     */
+    default double getMaxHealth() {
+        return this.getValue(Queries.MAX_HEALTH).get();
+    }
+
+    /**
+     * Sets the maximum health of the {@link Living} entity.
+     *
+     * @param maxHealth The new value
+     * @return This component
+     */
+    default HealthComponent setMaxHealth(double maxHealth) {
+        this.setValue(Queries.MAX_HEALTH, maxHealth);
+        return this;
     }
 
 }

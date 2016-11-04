@@ -30,7 +30,9 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.neptunepowered.gravel.api.entity;
+package org.neptunepowered.gravel.api.entity.query;
+
+import org.neptunepowered.gravel.api.entity.Entity;
 
 import java.util.Optional;
 
@@ -40,11 +42,11 @@ import java.util.Optional;
 public interface Queriable {
 
     /**
-     * Sets the value of the given query in the {@link Entity}.
+     * Sets the value of the given of in the {@link Entity}.
      *
-     * @param query The query
+     * @param query The of
      * @param value The new value
-     * @param <T> The type of the query and value
+     * @param <T> The type of the of and value
      * @return {@code True} if successfully completed manipulation
      */
     <T> boolean setValue(Query<T> query, T value);
@@ -52,8 +54,8 @@ public interface Queriable {
     /**
      * Gets the value for the given {@link Query}, if available.
      *
-     * @param query The query
-     * @param <T> The type of the query and value
+     * @param query The of
+     * @param <T> The type of the of and value
      * @return The value, if available
      */
     <T> Optional<T> getValue(Query<T> query);

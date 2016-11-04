@@ -33,6 +33,7 @@
 package org.neptunepowered.gravel.api.entity;
 
 import org.neptunepowered.gravel.api.entity.component.Component;
+import org.neptunepowered.gravel.api.entity.query.Queriable;
 
 import java.util.Optional;
 

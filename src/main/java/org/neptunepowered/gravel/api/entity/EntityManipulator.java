@@ -32,11 +32,38 @@
 
 package org.neptunepowered.gravel.api.entity;
 
-/**
- * A pseudo-enum of the {@link Query}s.
- */
-public final class Queries {
+import org.neptunepowered.gravel.api.entity.query.Query;
 
-    public static final Query<Double> HEALTH = Query.query();
+import java.util.Optional;
+
+/**
+ * A manipulator for applying {@link Query} manipulations on an {@link Entity}.
+ */
+public interface EntityManipulator<T> {
+
+    /**
+     * Checks if this manipulator supports the given Entity type.
+     *
+     * @param entity The entity class
+     * @return {@code True} if the entity type is supported
+     */
+    boolean supports(Class<? extends Entity> entity);
+
+    /**
+     * Sets the value of this manipulator's query to the given entity.
+     *
+     * @param entity The entity
+     * @param value The new value
+     * @return {@code True} if the manipulation was successful
+     */
+    boolean set(Entity entity, T value);
+
+    /**
+     * Gets the value of this manipulator's query for the given entity.
+     *
+     * @param entity The entity
+     * @return The value, if available
+     */
+    Optional<T> get(Entity entity);
 
 }
